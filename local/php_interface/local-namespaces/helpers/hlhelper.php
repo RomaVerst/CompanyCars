@@ -13,7 +13,15 @@ class HlHelper
         Loader::includeModule("highloadblock");
     }
 
-    public function getEntityClass($hlId)
+    /**
+     * Возвращение строкового названия класса сущности hl блока
+     * @param int $hlId
+     * @return string
+     * @throws \Bitrix\Main\ArgumentException
+     * @throws \Bitrix\Main\ObjectPropertyException
+     * @throws \Bitrix\Main\SystemException
+     */
+    public function getEntityClass(int $hlId): string
     {
         if (!(int)$hlId) {
             return '';
