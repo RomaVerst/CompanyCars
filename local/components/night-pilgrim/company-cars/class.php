@@ -79,13 +79,7 @@ class CarReservationComponent extends CBitrixComponent
             'cache' => ['ttl' => 3600],
             'select' => ['ID', 'UF_NAME', 'DRIVER.UF_NAME', 'DRIVER.UF_LAST_NAME', 'COMFORT_CATEGORY.UF_NAME']
         ]);
-        $reservationResult = $reservationHlClass::getList([
-            'select' => ['UF_CAR_ID']
-        ]);
 
-        while ($res = $reservationResult->fetch()) {
-            $busyCars[] = $res['UF_CAR_ID'];
-        }
         while ($car = $carsDb->fetch()) {
             $cars[$car['ID']] = $car;
         }
