@@ -55,6 +55,11 @@ class CarReservationComponent extends CBitrixComponent
             return;
         }
 
+        if (!$start || !$end) {
+            ShowError(Loc::getMessage('NIGHT_PILGRIM.CLASS_COMPANY_CARS_NO_ISSET_TIME'));
+            return;
+        }
+
         //делаем выборку всех автомобилей найденных категорий комфорта
         $cars = [];
 
@@ -82,12 +87,6 @@ class CarReservationComponent extends CBitrixComponent
 
         while ($car = $carsDb->fetch()) {
             $cars[$car['ID']] = $car;
-        }
-
-
-        if (!$start || !$end) {
-            ShowError(Loc::getMessage('NIGHT_PILGRIM.CLASS_COMPANY_CARS_NO_ISSET_TIME'));
-            return;
         }
 
         $objDateTimeStart = DateTime::createFromTimestamp($start);
